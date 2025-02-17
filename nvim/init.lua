@@ -1,0 +1,63 @@
+require("core.options")
+require("core.keymaps")
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	if vim.v.shell_error ~= 0 then
+		error("Error cloning lazy.nvim:\n" .. out)
+	end
+end ---@diagnostic disable-next-line: undefined-field
+vim.opt.rtp:prepend(lazypath)
+
+-- [[ Configure and install plugins ]]
+--
+--  To check the current status of your plugins, run
+--    :Lazy
+--
+--  You can press `?` in this menu for help. Use `:q` to close the window
+--
+--  To update plugins you can run
+--    :Lazy update
+
+require("lazy").setup({
+	require("plugins.neotree"),
+	require("plugins.colorscheme"),
+	require("plugins.lazygit"),
+	require("plugins.vim-tmux-navigator"),
+	require("plugins.vim-test"),
+	require("plugins.lualine"),
+	require("plugins.indent-blankline"),
+	require("plugins.bufferline"),
+	require("plugins.treesitter"),
+	require("plugins.telescope"),
+	require("plugins.lsp"),
+	require("plugins.autocompletion"),
+	require("plugins.autoformatting"),
+	require("plugins.alpha"),
+	require("plugins.nvim-autopairs"),
+	require("plugins.todo-comments"),
+	require("plugins.nvim-colorizer"),
+	require("plugins.copilot"),
+	require("plugins.vim-surround"),
+})
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+	pattern = "*.html",
+	callback = function()
+		local first_line = vim.api.nvim_buf_get_lines(0, 0, 1, false)[1]
+		if first_line:lower() == "<!doctype html>" then
+			vim.api.nvim_buf_set_lines(0, 0, 1, false, { "<!DOCTYPE html>" })
+			vim.cmd("write")
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "json", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+	callback = function()
+		vim.bo.shiftwidth = 4
+		vim.bo.tabstop = 4
+	end,
+})
