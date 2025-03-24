@@ -11,16 +11,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- [[ Configure and install plugins ]]
---
---  To check the current status of your plugins, run
---    :Lazy
---
---  You can press `?` in this menu for help. Use `:q` to close the window
---
---  To update plugins you can run
---    :Lazy update
-
 require("lazy").setup({
 	require("plugins.neotree"),
 	require("plugins.colorscheme"),
@@ -41,6 +31,7 @@ require("lazy").setup({
 	require("plugins.nvim-colorizer"),
 	require("plugins.copilot"),
 	require("plugins.vim-surround"),
+	require("plugins.nvim-markdown-preview"),
 })
 
 vim.api.nvim_create_autocmd("BufWritePost", {
