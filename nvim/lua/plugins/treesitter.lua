@@ -1,4 +1,4 @@
-return { -- Highlight, edit, and navigate code
+return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   main = "nvim-treesitter.configs", -- Sets main module to use for opts
@@ -21,6 +21,7 @@ return { -- Highlight, edit, and navigate code
       "java",
       "groovy",
       "go",
+      "rust",
       "gitignore",
       "graphql",
       "yaml",
@@ -33,8 +34,7 @@ return { -- Highlight, edit, and navigate code
       "css",
       "html",
       "php",
-      --"blade",
-      "php_only",
+      -- "php_only",
     },
     autotag = { enable = true },
     autopairs = { enable = true },

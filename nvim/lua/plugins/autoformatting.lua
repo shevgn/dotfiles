@@ -1,4 +1,3 @@
--- Format on save and linters
 return {
 	"nvimtools/none-ls.nvim",
 	dependencies = {
@@ -10,7 +9,6 @@ return {
 		local formatting = null_ls.builtins.formatting -- to setup formatters
 		local diagnostics = null_ls.builtins.diagnostics -- to setup linters
 
-		-- list of formatters & linters for mason to install
 		require("mason-null-ls").setup({
 			ensure_installed = {
 				"checkmake",
@@ -18,9 +16,8 @@ return {
 				"stylua", -- lua formatter
 				"eslint_d", -- ts/js linter
 				"shfmt",
-				"ruff",
+				-- "ruff",
 			},
-			-- auto-install configured formatters & linters (with null-ls)
 			automatic_installation = true,
 		})
 
@@ -34,7 +31,7 @@ return {
 					"javascriptreact",
 					"typescript",
 					"typescriptreact",
-					"vue",
+					-- "vue",
 					"tailwindcss",
 					"json",
 					"yaml",
@@ -43,9 +40,9 @@ return {
 			}),
 			formatting.stylua,
 			formatting.shfmt.with({ args = { "-i", "4" } }),
-			-- formatting.terraform_fmt,
-			require("none-ls.formatting.ruff").with({ extra_args = { "--extend-select", "I" } }),
-			require("none-ls.formatting.ruff_format"),
+			formatting.terraform_fmt,
+			-- require("none-ls.formatting.ruff").with({ extra_args = { "--extend-select", "I" } }),
+			-- require("none-ls.formatting.ruff_format"),
 		}
 
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
