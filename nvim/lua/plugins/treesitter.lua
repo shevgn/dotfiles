@@ -10,6 +10,8 @@ return {
       "javascript",
       "typescript",
       "vue",
+      "svelte",
+      "htmx",
       "vimdoc",
       "vim",
       "regex",
