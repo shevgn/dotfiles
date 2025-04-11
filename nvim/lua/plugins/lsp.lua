@@ -101,6 +101,7 @@ return { -- LSP Configuration & Plugins
 
     local servers = {
       html = { filetypes = { "html", "twig", "hbs", "php" } },
+      htmx = {},
       eslint = {
         filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
         settings = {
@@ -140,6 +141,7 @@ return { -- LSP Configuration & Plugins
         filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
       },
       volar = {},
+      svelte = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes { ...},
@@ -178,6 +180,9 @@ return { -- LSP Configuration & Plugins
         },
       },
       gopls = {},
+      -- sqlls = {
+      --   filetypes = { "sql", "sqlite3" },
+      -- },
       tailwindcss = {},
       jsonls = {},
       yamlls = {},
