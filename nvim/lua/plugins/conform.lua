@@ -10,6 +10,14 @@ return {
       formatters_by_ft = {
         go = { "goimports", "gofmt" },
         rust = { "rustfmt", lsp_format = "fallback" },
+        html = {
+          "prettier",
+          "eslint",
+        },
+        templ = {
+          "prettier",
+          "eslint_d",
+        },
         vue = {
           "prettier",
           "eslint_d",
