@@ -12,7 +12,7 @@ return {
         rust = { "rustfmt", lsp_format = "fallback" },
         html = {
           "prettier",
-          "eslint",
+          "eslint_d",
         },
         templ = {
           "prettier",
@@ -35,6 +35,10 @@ return {
           "eslint_d",
         },
         javascript = {
+          "prettier",
+          "eslint_d",
+        },
+        twig = {
           "prettier",
           "eslint_d",
         },
