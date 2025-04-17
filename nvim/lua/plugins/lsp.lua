@@ -100,15 +100,19 @@ return { -- LSP Configuration & Plugins
     capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
     local servers = {
-      html = { filetypes = { "html", "twig", "hbs", "php" } },
-      htmx = {},
+      html = { filetypes = { "html", "twig", "hbs", "php", "templ" } },
+      htmx = { filetypes = { "html", "twig", "templ" } },
+      templ = {},
       eslint = {
-        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+        filetypes = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
         settings = {
           lint = { enable = true },
         },
       },
-      emmet_ls = {},
+      emmet_ls = {
+        filetypes = { "html", "twig", "hbs", "php", "templ" }
+      },
+      twiggy_language_server = {},
       intelephense = {
         -- cmd = { "intelephense", "--stdio" },
         root_dir = function(fname)
@@ -187,7 +191,7 @@ return { -- LSP Configuration & Plugins
       jsonls = {},
       yamlls = {},
       cssls = {},
-      ltex = {},
+      -- ltex = {},
       texlab = {},
     }
 
