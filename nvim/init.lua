@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "json", "php", "sql", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+  pattern = { "json", "html", "go", "php", "sql", "javascript", "javascriptreact", "typescript", "typescriptreact" },
   callback = function()
     vim.bo.shiftwidth = 4
     vim.bo.tabstop = 4
